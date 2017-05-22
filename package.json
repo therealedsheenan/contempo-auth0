@@ -1,0 +1,9 @@
+{
+  "name": "contempo-auth0",
+  "version": "1.0.0",
+  "description": "Authentication example using contempo with auth0",
+  "main": "index.js",
+  "repository": "https://github.com/therealedsheenan/contempo-auth0.git",
+  "author": "therealedsheenan <private.sheenantenepre@gmail.com>",
+  "license": "MIT"
+}
