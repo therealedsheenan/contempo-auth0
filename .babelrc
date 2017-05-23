@@ -1,0 +1,28 @@
+{
+  "presets": [
+    ["es2015", {"modules": false}],
+    "stage-0",
+    [
+      "latest", {
+        "es2015": {
+          "modules": false
+        }
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "syntax-dynamic-import"
+  ],
+  "env": {
+    "start": {
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}
