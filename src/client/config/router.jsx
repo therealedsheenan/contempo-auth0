@@ -5,36 +5,16 @@ import { Route } from 'react-router-dom';
 // react containers
 import Root from '../components/Root/index';
 import Navigation from '../components/Navigation/NavigationComponent';
-// import { asyncComponent } from 'react-async-component';
 
-import AsyncRoute from '../components/AsyncRoute/AsyncRoute';
+import asyncComponent from '../components/AsyncComponent/AsyncComponent';
 
 const routes = () => (
   <Root>
     <Route path="/" component={Navigation} />
     <Route
       exact
-      path="/style"
-      component={
-        props => (
-          <AsyncRoute
-            props={props}
-            loadingPromise={System.import('../containers/Styleguide/StyleguideContainer')}
-          />
-        )
-      }
-    />
-    <Route
-      exact
       path="/"
-      component={
-        props => (
-          <AsyncRoute
-            props={props}
-            loadingPromise={System.import('../containers/Home/HomeContainer')}
-          />
-        )
-      }
+      component={asyncComponent(System.import('../containers/Home/HomeContainer'))}
     />
   </Root>
 );

@@ -2,14 +2,29 @@
 
 import React from 'react';
 
-import { asyncComponent } from 'react-async-component';
+const asyncComponent = WrappedComponent =>
+  // return class
+   class extends React.Component {
+     constructor(props) {
+       super(props);
+       this.state = {
+         loaded: false
+       };
+     }
 
-const Async = route => (
-  asyncComponent({
-    resolve: () => route,
-    LoadingComponent: () => <h1>Loading...</h1>,
-    ErrorComponent: ({ error }) => <div>{error.message}</div>
-  })
-);
+     componentDidMount() {
+       WrappedComponent.then((module) => {
+         this.component = module.default;
+         this.setState({ loaded: true });
+       });
+     }
 
-export default Async;
+     render() {
+       if (this.state.loaded) {
+         return <this.component {...this.props.props} />;
+       }
+       return <div>Loading...</div>;
+     }
+  };
+
+export default asyncComponent;
